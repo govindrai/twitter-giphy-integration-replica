@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+    normalize.css removes cross-browser differences in defaults, e.g.,
+    differences in how form elements appear between Firefox and IE
+    See: http://necolas.github.com/normalize.css/
+  -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <!--
+    application.css is where you put your styles
+  -->
+  <link rel="stylesheet" href="/css/application.css">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/js/application.js"></script>
+
+  <title></title>
+</head>
+<body>
+  <%= yield %>
+
+  Show Gif Results here
+  <div id="gif-results"></div>
+
+  <div id="gif-module">
+    <form>
+      <div>
+        <input type="text" name="gif-search" autocomplete="off" placeholder="Search for a GIF">
+      </div>
+    </form>
+    <div id="gif-categories">
+      <div class="gif-category">
+        <button style="background-image:url('http://media1.giphy.com/media/5wWf7GR2nhgamhRnEuA/200w.gif')"></button>
+        <div class="overlay"></div>
+        <div class="overlayed-gif-text">Agree</div>
+      </div>
+      <div class="gif-category">
+        <button style="background-image:url('http://media1.giphy.com/media/3oz8xODcLLAxb8Qyju/200w.gif')"></button>
+        <div class="overlay"></div>
+        <div class="overlayed-gif-text">Dab</div>
+      </div>
+      <div class="gif-category">
+        <button style="background-image:url('http://media0.giphy.com/media/5xaOcLDE64VMF4LqqrK/200w.gif')"></button>
+        <div class="overlay"></div>
+        <div class="overlayed-gif-text">Applause</div>
+      </div>
+      <div class="gif-category">
+        <button style="background-image:url('http://media2.giphy.com/media/xUA7b0L9vrJjDaqwKI/200w.gif')"></button>
+        <div class="overlay"></div>
+        <div class="overlayed-gif-text">Aww</div>
+      </div>
+      <div class="gif-category">
+        <button style="background-image:url('http://media2.giphy.com/media/wAxlCmeX1ri1y/200w.gif')"></button>
+        <div class="overlay"></div>
+        <div class="overlayed-gif-text">Dance</div>
+      </div>
+      <div class="gif-category">
+        <button style="background-image:url('http://media1.giphy.com/media/qrwthQPPQrtEk/200w.gif')"></button>
+        <div class="overlay"></div>
+        <div class="overlayed-gif-text">Deal With It</div>
+      </div>
+      <div class="gif-category">
+        <button style="background-image:url('http://media1.giphy.com/media/O7eUXxYYkVXna/200w.gif')"></button>
+        <div class="overlay"></div>
+        <div class="overlayed-gif-text">Eww</div>
+      </div>
+      <div class="gif-category">
+        <button style="background-image:url('http://media4.giphy.com/media/14smAwp2uHM3Di/200w.gif')"></button>
+        <div class="overlay"></div>
+        <div class="overlayed-gif-text">Eye Roll</div>
+      </div>
+      <div class="gif-category">
+        <button style="background-image:url('http://media1.giphy.com/media/5wWf7GR2nhgamhRnEuA/200w.gif')"></button>
+        <div class="overlay"></div>
+        <div class="overlayed-gif-text">Agree</div>
+      </div>
+      <div class="gif-category">
+        <button style="background-image:url('http://media1.giphy.com/media/3oz8xODcLLAxb8Qyju/200w.gif')"></button>
+        <div class="overlay"></div>
+        <div class="overlayed-gif-text">Dab</div>
+      </div>
+      <div class="gif-category">
+        <button style="background-image:url('http://media0.giphy.com/media/5xaOcLDE64VMF4LqqrK/200w.gif')"></button>
+        <div class="overlay"></div>
+        <div class="overlayed-gif-text">Applause</div>
+      </div>
+      <div class="gif-category">
+        <button style="background-image:url('http://media2.giphy.com/media/xUA7b0L9vrJjDaqwKI/200w.gif')"></button>
+        <div class="overlay"></div>
+        <div class="overlayed-gif-text">Aww</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
