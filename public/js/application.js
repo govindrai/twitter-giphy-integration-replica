@@ -1,19 +1,10 @@
-$(document).ready(function() {
-  // Stores the original tweet data
-  gifCategories = $('#gif-categories').html()
 
-  $('[name="gif-search"]').keyup(function(e) {
-    offset = 0;
-    showGifs3(e);
-  })
-
-  $(document).on('click', '.gif-category', showGifs2)
-});
 
 var offset = 0;
 var gifCategories;
 
-function showGifs3(e) {
+//CALLED WHEN WANTING TO SHOW GIFS WHEN SEARCHING
+function searchGIPHY(e) {
   e.preventDefault();
   var userSearch = $("[name='gif-search']").val()
 
@@ -33,7 +24,8 @@ function showGifs3(e) {
 
     for (var i = 0; i < response.pagination.count; i++) {
       var gifURL = response.data[i].images.fixed_width.url
-      $('#gif-categories').append(`<div class="gif-category"><button style="background-image:url('${gifURL}')"></button></div>`)
+      var embedURL = response.data[i].embed_url
+      $('#gif-categories').append(`<div class="gif-category"><button style="background-image:url('${gifURL}')" data-gif-embed-url="${embedURL}"></button></div>`)
     }
   })
 
@@ -45,10 +37,10 @@ function showGifs3(e) {
 
 }
 
-function showGifs2(e) {
+function showGIFsInCategory(e) {
   e.preventDefault();
-  console.log("I MADE IT HERE")
-  var unencodedURL = 'http://api.giphy.com/v1/gifs/search?q=' + $(this).find('.overlayed-gif-text').html() + `&offset=${offset}` + '&api_key=dc6zaTOxFJmzC'
+  console.log("showGIFsInCategory")
+  var unencodedURL = 'http://api.giphy.com/v1/gifs/search?q=' + $(this).next().html() + `&offset=${offset}` + '&api_key=dc6zaTOxFJmzC'
   var encodedURL = encodeURI(unencodedURL)
   var request = $.ajax({
     url: encodedURL
@@ -59,7 +51,8 @@ function showGifs2(e) {
 
     for (var i = 0; i < response.pagination.count; i++) {
       var gifURL = response.data[i].images.fixed_width.url
-      $('#gif-categories').append(`<button><div class="gif-category"><div class="crop"><img src="${gifURL}"></div></button>`)
+      var embedURL = response.data[i].embed_url
+      $('#gif-categories').append(`<div class="gif-category"><button style="background-image:url('${gifURL}')" data-gif-embed-url="${embedURL}"></button></div>`)
     }
 
   })
@@ -70,3 +63,27 @@ function showGifs2(e) {
   })
 
 }
+
+function addGIFToForm(e) {
+  console.log("IM IN addGIFToForm")
+  e.preventDefault();
+  console.log(this);
+  var embedURL = this.dataset.gifEmbedUrl
+  $('#gif-results').html(`<embed src="${embedURL}" height="350px"></embed>`)
+}
+
+$(document).ready(function() {
+  // Stores the original tweet data
+  gifCategories = $('#gif-categories').html()
+
+  // retrieves gifs from giphy based on user input
+  $('[name="gif-search"]').keyup(function(e) {
+    offset = 0;
+    searchGIPHY(e);
+  })
+
+  // shows gifs in predetermined category
+  $(document).on('click', '.overlay', showGIFsInCategory)
+
+  $(document).on('click', '.gif-category button', addGIFToForm)
+});
